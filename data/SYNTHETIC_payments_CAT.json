@@ -1,0 +1,12 @@
+{
+  "note": "SYNTHETIC DATA - all companies, GSTINs, invoices and amounts are fictitious.",
+  "client_id": "CAT",
+  "payments": [
+    {
+      "supplier_gstin": "27AACFF4417T1ZQ",
+      "invoice_no": "FR/25-26/1120",
+      "paid_on": "2026-04-10",
+      "amount": 100300
+    }
+  ]
+}

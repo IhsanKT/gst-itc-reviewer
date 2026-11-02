@@ -1,0 +1,280 @@
+{
+  "note": "SYNTHETIC DATA - all companies, GSTINs, invoices and amounts are fictitious.",
+  "client_id": "CAB",
+  "period": "2026-10",
+  "invoices": [
+    {
+      "supplier_gstin": "33AABFC4418A1ZE",
+      "supplier_name": "Coastal Auto Sales (SYNTHETIC)",
+      "invoice_no": "CAS/26-27/1177",
+      "invoice_date": "2026-10-06",
+      "doc_type": "INV",
+      "reverse_charge": false,
+      "received_on": "2026-10-08",
+      "items": [
+        {
+          "line_id": "CAB-01",
+          "description": "Maruti Suzuki Dzire Tour S (5 seater)",
+          "hsn": "8703",
+          "quantity": null,
+          "unit": null,
+          "taxable_value": 610000,
+          "gst_rate": 28,
+          "tax_amount": 170800.0
+        }
+      ]
+    },
+    {
+      "supplier_gstin": "33AACCP6620Q1ZX",
+      "supplier_name": "Prabhat General Insurance (SYNTHETIC)",
+      "invoice_no": "PGI-MOT-90455",
+      "invoice_date": "2026-10-06",
+      "doc_type": "INV",
+      "reverse_charge": false,
+      "received_on": "2026-10-06",
+      "items": [
+        {
+          "line_id": "CAB-02",
+          "description": "Comprehensive motor insurance - 4 Dzire Tour S taxis (TN-09 series)",
+          "hsn": "997134",
+          "quantity": null,
+          "unit": null,
+          "taxable_value": 96000,
+          "gst_rate": 18,
+          "tax_amount": 17280.0
+        }
+      ]
+    },
+    {
+      "supplier_gstin": "33ABCFV3390B1Z7",
+      "supplier_name": "Velan Motor Works (SYNTHETIC)",
+      "invoice_no": "VMW/2026/882",
+      "invoice_date": "2026-10-14",
+      "doc_type": "INV",
+      "reverse_charge": false,
+      "received_on": "2026-10-14",
+      "items": [
+        {
+          "line_id": "CAB-03",
+          "description": "gaadi service + oil change - Innova taxi TN09BZ7781",
+          "hsn": "998714",
+          "quantity": null,
+          "unit": null,
+          "taxable_value": 14500,
+          "gst_rate": 18,
+          "tax_amount": 2610.0
+        }
+      ]
+    },
+    {
+      "supplier_gstin": "33AAHFM6621C1ZL",
+      "supplier_name": "Metro Fleet Partners (SYNTHETIC)",
+      "invoice_no": "MFP/OCT26/017",
+      "invoice_date": "2026-10-31",
+      "doc_type": "INV",
+      "reverse_charge": false,
+      "received_on": "2026-10-31",
+      "items": [
+        {
+          "line_id": "CAB-04",
+          "description": "Sub-hire of 3 Etios cabs with drivers from partner fleet - airport contract, Oct 2026",
+          "hsn": "996601",
+          "quantity": null,
+          "unit": null,
+          "taxable_value": 75000,
+          "gst_rate": 12,
+          "tax_amount": 9000.0
+        }
+      ]
+    },
+    {
+      "supplier_gstin": "33AABFC4418A1ZE",
+      "supplier_name": "Coastal Auto Sales (SYNTHETIC)",
+      "invoice_no": "CAS/26-27/1203",
+      "invoice_date": "2026-10-21",
+      "doc_type": "INV",
+      "reverse_charge": false,
+      "received_on": "2026-10-23",
+      "items": [
+        {
+          "line_id": "CAB-05",
+          "description": "Toyota Camry Hybrid - for Managing Partner's personal use",
+          "hsn": "8703",
+          "quantity": null,
+          "unit": null,
+          "taxable_value": 4600000,
+          "gst_rate": 28,
+          "tax_amount": 1288000.0
+        }
+      ]
+    },
+    {
+      "supplier_gstin": "33AEOPM7712D1ZA",
+      "supplier_name": "Murugan Tea Stall (SYNTHETIC)",
+      "invoice_no": "MTS-26-104",
+      "invoice_date": "2026-10-31",
+      "doc_type": "INV",
+      "reverse_charge": false,
+      "received_on": "2026-10-31",
+      "items": [
+        {
+          "line_id": "CAB-06",
+          "description": "chai-nashta for drivers at depot - Oct",
+          "hsn": "996333",
+          "quantity": null,
+          "unit": null,
+          "taxable_value": 9200,
+          "gst_rate": 5,
+          "tax_amount": 460.0
+        }
+      ]
+    },
+    {
+      "supplier_gstin": "33AACCT8204E1ZN",
+      "supplier_name": "TrackWise Telematics (SYNTHETIC)",
+      "invoice_no": "TWT/26-27/3310",
+      "invoice_date": "2026-10-01",
+      "doc_type": "INV",
+      "reverse_charge": false,
+      "received_on": "2026-10-01",
+      "items": [
+        {
+          "line_id": "CAB-07",
+          "description": "GPS fleet tracking SaaS - 40 vehicles, Oct 2026",
+          "hsn": "998315",
+          "quantity": null,
+          "unit": null,
+          "taxable_value": 32000,
+          "gst_rate": 18,
+          "tax_amount": 5760.0
+        }
+      ]
+    },
+    {
+      "supplier_gstin": "33AAJFC1185F1ZH",
+      "supplier_name": "Chola Building Materials (SYNTHETIC)",
+      "invoice_no": "CBM/26/2290",
+      "invoice_date": "2026-10-17",
+      "doc_type": "INV",
+      "reverse_charge": false,
+      "received_on": "2026-10-18",
+      "items": [
+        {
+          "line_id": "CAB-08",
+          "description": "Cement and TMT steel - construction of covered parking shed (building) at depot",
+          "hsn": "6810",
+          "quantity": null,
+          "unit": null,
+          "taxable_value": 480000,
+          "gst_rate": 18,
+          "tax_amount": 86400.0
+        }
+      ]
+    },
+    {
+      "supplier_gstin": "33AAFCA9921G1Z5",
+      "supplier_name": "AutoTech Garage Equipment (SYNTHETIC)",
+      "invoice_no": "ATG/24-25/0771",
+      "invoice_date": "2025-02-10",
+      "doc_type": "INV",
+      "reverse_charge": false,
+      "received_on": "2025-02-14",
+      "items": [
+        {
+          "line_id": "CAB-09",
+          "description": "Wheel alignment machine for depot workshop",
+          "hsn": "9031",
+          "quantity": null,
+          "unit": null,
+          "taxable_value": 110000,
+          "gst_rate": 18,
+          "tax_amount": 19800.0
+        }
+      ]
+    },
+    {
+      "supplier_gstin": "33AACCR5546H1ZS",
+      "supplier_name": "RoadEye Electronics (SYNTHETIC)",
+      "invoice_no": "REE/26-27/0098",
+      "invoice_date": "2026-05-03",
+      "doc_type": "INV",
+      "reverse_charge": false,
+      "received_on": "2026-05-06",
+      "items": [
+        {
+          "line_id": "CAB-10",
+          "description": "Dashcams for fleet (40 units)",
+          "hsn": "8525",
+          "quantity": null,
+          "unit": null,
+          "taxable_value": 48000,
+          "gst_rate": 18,
+          "tax_amount": 8640.0
+        }
+      ]
+    },
+    {
+      "supplier_gstin": "33ABDFK6613J1ZM",
+      "supplier_name": "Kaveri Garments (SYNTHETIC)",
+      "invoice_no": "KG/26-27/0145",
+      "invoice_date": "2026-05-04",
+      "doc_type": "INV",
+      "reverse_charge": false,
+      "received_on": "2026-05-07",
+      "items": [
+        {
+          "line_id": "CAB-11",
+          "description": "Driver uniforms (80 sets)",
+          "hsn": "6203",
+          "quantity": null,
+          "unit": null,
+          "taxable_value": 38000,
+          "gst_rate": 12,
+          "tax_amount": 4560.0
+        }
+      ]
+    },
+    {
+      "supplier_gstin": "33AACCS4470K1Z0",
+      "supplier_name": "Suraksha Health Insurance (SYNTHETIC)",
+      "invoice_no": "SHI/GRP/26/7714",
+      "invoice_date": "2026-10-01",
+      "doc_type": "INV",
+      "reverse_charge": false,
+      "received_on": "2026-10-01",
+      "items": [
+        {
+          "line_id": "CAB-12",
+          "description": "Group health insurance - drivers and office staff (annual)",
+          "hsn": "997133",
+          "quantity": null,
+          "unit": null,
+          "taxable_value": 45000,
+          "gst_rate": 18,
+          "tax_amount": 8100.0
+        }
+      ]
+    },
+    {
+      "supplier_gstin": "33AABFC4418A1ZE",
+      "supplier_name": "Coastal Auto Sales (SYNTHETIC)",
+      "invoice_no": "CAS/26-27/1188",
+      "invoice_date": "2026-10-11",
+      "doc_type": "INV",
+      "reverse_charge": false,
+      "received_on": "2026-10-13",
+      "items": [
+        {
+          "line_id": "CAB-13",
+          "description": "Force Traveller 17-seater - for airport shuttle service",
+          "hsn": "8702",
+          "quantity": null,
+          "unit": null,
+          "taxable_value": 1450000,
+          "gst_rate": 28,
+          "tax_amount": 406000.0
+        }
+      ]
+    }
+  ]
+}

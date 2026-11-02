@@ -1,0 +1,98 @@
+{
+  "note": "SYNTHETIC DATA - all companies, GSTINs, invoices and amounts are fictitious.",
+  "client_id": "CAB",
+  "period": "2026-10",
+  "records": [
+    {
+      "supplier_gstin": "33AABFC4418A1ZE",
+      "invoice_no": "CAS-2627-1177",
+      "invoice_date": "2026-10-06",
+      "taxable_value": 610000,
+      "tax_amount": 170800.0
+    },
+    {
+      "supplier_gstin": "33AACCP6620Q1ZX",
+      "invoice_no": "PGI-MOT-90455",
+      "invoice_date": "2026-10-06",
+      "taxable_value": 96000,
+      "tax_amount": 17280.0
+    },
+    {
+      "supplier_gstin": "33ABCFV3390B1Z7",
+      "invoice_no": "VMW/2026/882",
+      "invoice_date": "2026-10-14",
+      "taxable_value": 14500,
+      "tax_amount": 2610.0
+    },
+    {
+      "supplier_gstin": "33AAHFM6621C1ZL",
+      "invoice_no": "MFP/OCT26/017",
+      "invoice_date": "2026-10-31",
+      "taxable_value": 75000,
+      "tax_amount": 9000.0
+    },
+    {
+      "supplier_gstin": "33AABFC4418A1ZE",
+      "invoice_no": "CAS/26-27/1203",
+      "invoice_date": "2026-10-21",
+      "taxable_value": 4600000,
+      "tax_amount": 1288000.0
+    },
+    {
+      "supplier_gstin": "33AEOPM7712D1ZA",
+      "invoice_no": "MTS-26-104",
+      "invoice_date": "2026-10-31",
+      "taxable_value": 9200,
+      "tax_amount": 460.0
+    },
+    {
+      "supplier_gstin": "33AACCT8204E1ZN",
+      "invoice_no": "TWT-2627-3310",
+      "invoice_date": "2026-10-01",
+      "taxable_value": 32000,
+      "tax_amount": 5760.0
+    },
+    {
+      "supplier_gstin": "33AAJFC1185F1ZH",
+      "invoice_no": "CBM/26/2290",
+      "invoice_date": "2026-10-17",
+      "taxable_value": 480000,
+      "tax_amount": 86400.0
+    },
+    {
+      "supplier_gstin": "33AAFCA9921G1Z5",
+      "invoice_no": "ATG-2425-0771",
+      "invoice_date": "2025-02-10",
+      "taxable_value": 110000,
+      "tax_amount": 19800.0
+    },
+    {
+      "supplier_gstin": "33AACCR5546H1ZS",
+      "invoice_no": "REE/26-27/0098",
+      "invoice_date": "2026-05-03",
+      "taxable_value": 48000,
+      "tax_amount": 8640.0
+    },
+    {
+      "supplier_gstin": "33ABDFK6613J1ZM",
+      "invoice_no": "KG/26-27/0145",
+      "invoice_date": "2026-05-04",
+      "taxable_value": 38000,
+      "tax_amount": 4560.0
+    },
+    {
+      "supplier_gstin": "33AACCS4470K1Z0",
+      "invoice_no": "SHI/GRP/26/7714",
+      "invoice_date": "2026-10-01",
+      "taxable_value": 45000,
+      "tax_amount": 8100.0
+    },
+    {
+      "supplier_gstin": "33AABFC4418A1ZE",
+      "invoice_no": "CAS/26-27/1188",
+      "invoice_date": "2026-10-11",
+      "taxable_value": 1450000,
+      "tax_amount": 406000.0
+    }
+  ]
+}

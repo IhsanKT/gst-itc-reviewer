@@ -1,0 +1,43 @@
+{
+  "note": "SYNTHETIC DATA - all companies, GSTINs, invoices and amounts are fictitious.",
+  "clients": [
+    {
+      "client_id": "SW",
+      "legal_name": "Nimbus Code Labs Pvt Ltd (SYNTHETIC)",
+      "gstin": "29AAHCN4821M1ZQ",
+      "business_activity": "Software development and IT consulting for Indian and overseas clients. Office-based, about 140 employees in Bengaluru. No factory, so the Factories Act canteen rule does not apply. Owns two cars used by the directors.",
+      "outward_supplies": [
+        "software development services (SAC 998314)",
+        "IT consulting (SAC 998313)"
+      ],
+      "notes": "Has a CSR obligation under section 135 of the Companies Act, 2013.",
+      "annual_returns_filed": {}
+    },
+    {
+      "client_id": "CAB",
+      "legal_name": "Sarathi Cabs LLP (SYNTHETIC)",
+      "gstin": "33AAJFS7310P1Z2",
+      "business_activity": "Radio taxi operator in Chennai: passenger transport by motor cab with a fleet of 40 cabs (5-seater sedans and 7-seater Innovas) and an airport shuttle. Charges GST at 12% with full ITC (not the 5% no-ITC option). About 60 drivers on payroll.",
+      "outward_supplies": [
+        "passenger transport by motor cab (SAC 996412)",
+        "airport shuttle service (SAC 996412)"
+      ],
+      "notes": "",
+      "annual_returns_filed": {}
+    },
+    {
+      "client_id": "CAT",
+      "legal_name": "Annapurna Event Caterers Pvt Ltd (SYNTHETIC)",
+      "gstin": "27AAKCA5562R1ZW",
+      "business_activity": "Outdoor and event catering, plus industrial canteen contracts, in Pune; charged at 18% with ITC. Runs a central kitchen registered as a factory under the Factories Act, 1948, with about 280 workers (a canteen is mandatory above 250 workers). Delivers food to an island resort client by boat.",
+      "outward_supplies": [
+        "outdoor catering services (SAC 996334)",
+        "industrial canteen services (SAC 996337)"
+      ],
+      "notes": "Annual return (GSTR-9) for FY 2025-26 was filed early, on 2026-10-25.",
+      "annual_returns_filed": {
+        "2025-26": "2026-10-25"
+      }
+    }
+  ]
+}

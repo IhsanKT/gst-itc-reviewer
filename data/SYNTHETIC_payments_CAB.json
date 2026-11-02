@@ -1,0 +1,12 @@
+{
+  "note": "SYNTHETIC DATA - all companies, GSTINs, invoices and amounts are fictitious.",
+  "client_id": "CAB",
+  "payments": [
+    {
+      "supplier_gstin": "33AAFCA9921G1Z5",
+      "invoice_no": "ATG/24-25/0771",
+      "paid_on": "2025-03-01",
+      "amount": 129800
+    }
+  ]
+}
