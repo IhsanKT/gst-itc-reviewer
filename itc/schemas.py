@@ -4,7 +4,7 @@ from __future__ import annotations
 from datetime import date
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 Label = Literal["Eligible", "Blocked", "Deferred", "Needs CA review"]
 FinalLabel = Literal["Eligible", "Blocked", "Deferred"]
@@ -88,6 +88,18 @@ class LLMBatchOutput(_Strict):
 
 
 class CADecision(_Strict):
+    """Accept keeps the provisional label. Override needs a label and a non-empty reason."""
     action: Literal["accept", "override"]
-    label: FinalLabel
+    label: FinalLabel | None = None
+    rule_id: str | None = None
     reason: str = ""
+    reviewer: str = "CA"
+
+    @model_validator(mode="after")
+    def _override_needs_label_and_reason(self):
+        if self.action == "override":
+            if self.label is None:
+                raise ValueError("override needs a label")
+            if not self.reason.strip():
+                raise ValueError("override needs a reason")
+        return self
