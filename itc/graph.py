@@ -10,6 +10,7 @@ resumes with Command(resume={"decisions": {line_id: decision}}). Every state tra
 """
 from __future__ import annotations
 
+import os
 import sqlite3
 from datetime import datetime, timezone
 from typing import TypedDict
@@ -75,7 +76,8 @@ def make_llm(mode: str, config: dict | None = None):
 
 
 def open_checkpointer(path: str | None = None, config: dict | None = None) -> SqliteSaver:
-    db = path or str(ROOT / (config or load_config())["checkpoint_db"])
+    """ITC_CHECKPOINT_DB overrides the configured file (used by the UI test to stay out of the real DB)."""
+    db = path or os.environ.get("ITC_CHECKPOINT_DB") or str(ROOT / (config or load_config())["checkpoint_db"])
     return SqliteSaver(sqlite3.connect(db, check_same_thread=False))
 
 
