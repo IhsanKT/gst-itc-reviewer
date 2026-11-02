@@ -1,0 +1,26 @@
+# Pinned run settings. Every value that can change a result is copied into the audit log of each run.
+
+llm:
+  base_url: https://openrouter.ai/api/v1
+  model_id: nvidia/nemotron-3.5-super-vl:free   # pinned; never the openrouter/free router
+  temperature: 0.3          # low but non-zero, so 3-run agreement means something
+  runs_per_line: 3
+  batch_size: 8             # invoice lines per request (free tier: ~20 req/min, ~50 req/day)
+  max_retries: 4
+  backoff_base_seconds: 4   # exponential: 4, 8, 16, 32 s on HTTP 429 / transient errors
+  request_timeout_seconds: 120
+  cache_dir: cache/llm
+
+prompt:
+  classify: classify_v1                 # prompts/classify_v1.md
+  baseline_no_rules: classify_norules_v1
+
+rules:
+  section_17_5: rules/cgst_17_5.yaml
+  section_16: rules/cgst_16.yaml
+
+routing:
+  review_threshold_inr: 50000   # taxable value above this always goes to the CA
+
+checkpoint_db: checkpoints.sqlite
+data_dir: data
