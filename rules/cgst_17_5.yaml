@@ -1,0 +1,408 @@
+# Rule pack: CGST Act 2017, Section 17(5) - blocked input tax credit.
+#
+# HOW TO READ THIS FILE
+# - Each entry is one clause or sub-item. Its `id` is the only citation the classifier may output.
+# - An exception `id` (e.g. S17_5_A.EX_PASSENGER_TRANSPORT) means "the clause is relevant but the exception
+#   applies": the line is NOT blocked by this clause, and the exception is cited.
+# - `text` is statute text. `source` says where each text came from. Entries whose `source` starts with
+#   DRAFT were NOT copied from an official consolidated text and must be checked.
+# - `verified` stays false until a human has checked the entry against the official Act
+#   (see docs/rule_pack_verification.md). Nothing in the code flips it.
+# - Entries are effective-dated. The loader keeps only entries in force on the last day of the tax period.
+#   The same `id` may appear more than once with non-overlapping date ranges (see S17_5_I).
+
+version: 2026.11.0
+act: Central Goods and Services Tax Act, 2017
+section: "17(5)"
+covers_from: 2019-02-01     # periods before this need the pre-2019 text of clauses (a) and (b); not included
+
+chapeau: >-
+  Notwithstanding anything contained in sub-section (1) of section 16 and sub-section (1) of section 18,
+  input tax credit shall not be available in respect of the following, namely:—
+
+definitions:
+  - id: S17_EXPL_CONSTRUCTION
+    applies_to: [S17_5_C, S17_5_D]
+    text: >-
+      Explanation.—For the purposes of clauses (c) and (d), the expression "construction" includes
+      re-construction, renovation, additions or alterations or repairs, to the extent of capitalisation,
+      to the said immovable property;
+    source: &cbic2020 "VERBATIM: CBIC consolidated CGST Act updated 30.09.2020, pp. 41-43, https://cbic-gst.gov.in/pdf/CGST-Act-Updated-30092020.pdf"
+    verified: false
+  - id: S17_EXPL_PLANT_AND_MACHINERY
+    applies_to: [S17_5_C, S17_5_D]
+    text: >-
+      Explanation.—For the purposes of this Chapter and Chapter VI, the expression "plant and machinery"
+      means apparatus, equipment, and machinery fixed to earth by foundation or structural support that are
+      used for making outward supply of goods or services or both and includes such foundation and
+      structural supports but excludes— (i) land, building or any other civil structures;
+      (ii) telecommunication towers; and (iii) pipelines laid outside the factory premises.
+    source: *cbic2020
+    verified: false
+    notes: >-
+      Finance Act 2025 (s.124, per secondary sources) numbers this Explanation as "Explanation 1" and inserts
+      an "Explanation 2". The text of Explanation 2 is NOT in this pack: it could not be sourced from an
+      official text. Must be added before relying on (c)/(d).
+
+rules:
+
+  # ---------------------------------------------------------------- (a) motor vehicles
+  - id: S17_5_A
+    clause: "17(5)(a)"
+    title: Motor vehicles for transport of persons, seating capacity up to 13 (including driver)
+    text: >-
+      motor vehicles for transportation of persons having approved seating capacity of not more than
+      thirteen persons (including the driver), except when they are used for making the following taxable
+      supplies, namely:— (A) further supply of such motor vehicles; or (B) transportation of passengers; or
+      (C) imparting training on driving such motor vehicles;
+    exceptions:
+      - id: S17_5_A.EX_FURTHER_SUPPLY
+        text: "(A) further supply of such motor vehicles;"
+        condition: The buyer deals in such vehicles (e.g. a car dealer buying stock for resale).
+      - id: S17_5_A.EX_PASSENGER_TRANSPORT
+        text: "(B) transportation of passengers;"
+        condition: The buyer uses the vehicle to supply passenger transport (e.g. taxi or cab operator).
+      - id: S17_5_A.EX_DRIVING_TRAINING
+        text: "(C) imparting training on driving such motor vehicles;"
+        condition: The buyer runs a driving school and uses the vehicle for training.
+    ambiguity: medium
+    needs_business_profile: true
+    effective_from: 2019-02-01
+    effective_to: null
+    source: *cbic2020
+    verified: false
+    notes: Substituted by CGST (Amendment) Act 2018 w.e.f. 01.02.2019. Vehicles with more than 13 seats, and goods vehicles, are outside (a).
+
+  # ---------------------------------------------------------------- (aa) vessels and aircraft
+  - id: S17_5_AA
+    clause: "17(5)(aa)"
+    title: Vessels and aircraft
+    text: >-
+      vessels and aircraft except when they are used— (i) for making the following taxable supplies,
+      namely:— (A) further supply of such vessels or aircraft; or (B) transportation of passengers; or
+      (C) imparting training on navigating such vessels; or (D) imparting training on flying such aircraft;
+      (ii) for transportation of goods;
+    exceptions:
+      - id: S17_5_AA.EX_FURTHER_SUPPLY
+        text: "(A) further supply of such vessels or aircraft;"
+        condition: The buyer deals in vessels or aircraft.
+      - id: S17_5_AA.EX_PASSENGER_TRANSPORT
+        text: "(B) transportation of passengers;"
+        condition: The buyer uses the vessel or aircraft to supply passenger transport.
+      - id: S17_5_AA.EX_TRAINING
+        text: "(C) imparting training on navigating such vessels; or (D) imparting training on flying such aircraft;"
+        condition: The buyer runs navigation or flying training using the vessel or aircraft.
+      - id: S17_5_AA.EX_GOODS_TRANSPORT
+        text: "(ii) for transportation of goods;"
+        condition: The vessel or aircraft is used to transport goods.
+    ambiguity: low
+    needs_business_profile: true
+    effective_from: 2019-02-01
+    effective_to: null
+    source: *cbic2020
+    verified: false
+
+  # ---------------------------------------------------------------- (ab) insurance / repair of (a), (aa)
+  - id: S17_5_AB
+    clause: "17(5)(ab)"
+    title: General insurance, servicing, repair and maintenance of blocked motor vehicles, vessels, aircraft
+    text: >-
+      services of general insurance, servicing, repair and maintenance in so far as they relate to motor
+      vehicles, vessels or aircraft referred to in clause (a) or clause (aa): Provided that the input tax
+      credit in respect of such services shall be available— (i) where the motor vehicles, vessels or
+      aircraft referred to in clause (a) or clause (aa) are used for the purposes specified therein;
+      (ii) where received by a taxable person engaged— (I) in the manufacture of such motor vehicles,
+      vessels or aircraft; or (II) in the supply of general insurance services in respect of such motor
+      vehicles, vessels or aircraft insured by him;
+    exceptions:
+      - id: S17_5_AB.EX_SPECIFIED_PURPOSE
+        text: "(i) where the motor vehicles, vessels or aircraft referred to in clause (a) or clause (aa) are used for the purposes specified therein;"
+        condition: The vehicle/vessel/aircraft itself qualifies for an exception under (a) or (aa) (e.g. a taxi operator's cab).
+      - id: S17_5_AB.EX_MANUFACTURER
+        text: "(ii) where received by a taxable person engaged— (I) in the manufacture of such motor vehicles, vessels or aircraft;"
+        condition: The buyer manufactures such vehicles, vessels or aircraft.
+      - id: S17_5_AB.EX_INSURER
+        text: "(II) in the supply of general insurance services in respect of such motor vehicles, vessels or aircraft insured by him;"
+        condition: The buyer is a general insurer and the vehicle is insured by it.
+    ambiguity: medium
+    needs_business_profile: true
+    effective_from: 2019-02-01
+    effective_to: null
+    source: *cbic2020
+    verified: false
+
+  # ---------------------------------------------------------------- (b)(i) split into sub-items
+  # Statute text is the whole of (b)(i) on each sub-item; the title names the sub-item the entry covers.
+  # The proviso after (b)(iii) (employer obliged by law) is treated as applying to all of clause (b);
+  # DRAFT reading based on CBIC Circular No. 172/04/2022-GST (06.07.2022) - verify.
+  - id: S17_5_B_I_FOOD
+    clause: "17(5)(b)(i)"
+    title: Food and beverages, outdoor catering
+    text: &b_i_text >-
+      food and beverages, outdoor catering, beauty treatment, health services, cosmetic and plastic surgery,
+      leasing, renting or hiring of motor vehicles, vessels or aircraft referred to in clause (a) or clause
+      (aa) except when used for the purposes specified therein, life insurance and health insurance:
+      Provided that the input tax credit in respect of such goods or services or both shall be available
+      where an inward supply of such goods or services or both is used by a registered person for making an
+      outward taxable supply of the same category of goods or services or both or as an element of a taxable
+      composite or mixed supply;
+    exceptions:
+      - id: S17_5_B_I_FOOD.EX_SAME_CATEGORY
+        text: &b_i_proviso "Provided that the input tax credit in respect of such goods or services or both shall be available where an inward supply of such goods or services or both is used by a registered person for making an outward taxable supply of the same category of goods or services or both or as an element of a taxable composite or mixed supply;"
+        condition: The buyer itself supplies food/beverages/catering (e.g. a restaurant or caterer buying food inputs), or uses it as an element of a taxable composite or mixed supply.
+      - id: S17_5_B_I_FOOD.EX_EMPLOYER_OBLIGATION
+        text: &b_employer_proviso "Provided that the input tax credit in respect of such goods or services or both shall be available, where it is obligatory for an employer to provide the same to its employees under any law for the time being in force."
+        condition: A law (e.g. Factories Act canteen rules) obliges the employer to provide it to employees. A company policy is not enough.
+    ambiguity: medium
+    needs_business_profile: true
+    effective_from: 2019-02-01
+    effective_to: null
+    source: *cbic2020
+    verified: false
+
+  - id: S17_5_B_I_BEAUTY_HEALTH
+    clause: "17(5)(b)(i)"
+    title: Beauty treatment, health services, cosmetic and plastic surgery
+    text: *b_i_text
+    exceptions:
+      - id: S17_5_B_I_BEAUTY_HEALTH.EX_SAME_CATEGORY
+        text: *b_i_proviso
+        condition: The buyer itself supplies the same category of service (e.g. a hospital or salon), or as an element of a taxable composite or mixed supply.
+      - id: S17_5_B_I_BEAUTY_HEALTH.EX_EMPLOYER_OBLIGATION
+        text: *b_employer_proviso
+        condition: A law obliges the employer to provide it to employees.
+    ambiguity: medium
+    needs_business_profile: true
+    effective_from: 2019-02-01
+    effective_to: null
+    source: *cbic2020
+    verified: false
+
+  - id: S17_5_B_I_VEHICLE_HIRE
+    clause: "17(5)(b)(i)"
+    title: Leasing, renting or hiring of motor vehicles, vessels or aircraft referred to in (a)/(aa)
+    text: *b_i_text
+    exceptions:
+      - id: S17_5_B_I_VEHICLE_HIRE.EX_SPECIFIED_PURPOSE
+        text: "except when used for the purposes specified therein"
+        condition: The hired vehicle is used for a purpose excepted under (a)/(aa), e.g. a cab operator hiring cars to run its passenger transport service.
+      - id: S17_5_B_I_VEHICLE_HIRE.EX_SAME_CATEGORY
+        text: *b_i_proviso
+        condition: The buyer itself supplies renting/hiring of such vehicles (e.g. a car-rental business sub-hiring cars).
+      - id: S17_5_B_I_VEHICLE_HIRE.EX_EMPLOYER_OBLIGATION
+        text: *b_employer_proviso
+        condition: A law obliges the employer to provide transport to employees.
+    ambiguity: medium
+    needs_business_profile: true
+    effective_from: 2019-02-01
+    effective_to: null
+    source: *cbic2020
+    verified: false
+
+  - id: S17_5_B_I_INSURANCE
+    clause: "17(5)(b)(i)"
+    title: Life insurance and health insurance
+    text: *b_i_text
+    exceptions:
+      - id: S17_5_B_I_INSURANCE.EX_SAME_CATEGORY
+        text: *b_i_proviso
+        condition: The buyer is an insurer supplying the same category of insurance (e.g. reinsurance inputs).
+      - id: S17_5_B_I_INSURANCE.EX_EMPLOYER_OBLIGATION
+        text: *b_employer_proviso
+        condition: A law obliges the employer to provide the insurance to employees.
+    ambiguity: medium
+    needs_business_profile: true
+    effective_from: 2019-02-01
+    effective_to: null
+    source: *cbic2020
+    verified: false
+
+  # ---------------------------------------------------------------- (b)(ii), (b)(iii)
+  - id: S17_5_B_II
+    clause: "17(5)(b)(ii)"
+    title: Membership of a club, health and fitness centre
+    text: membership of a club, health and fitness centre; and
+    exceptions:
+      - id: S17_5_B_II.EX_EMPLOYER_OBLIGATION
+        text: *b_employer_proviso
+        condition: A law obliges the employer to provide it to employees.
+    ambiguity: low
+    needs_business_profile: false
+    effective_from: 2019-02-01
+    effective_to: null
+    source: *cbic2020
+    verified: false
+
+  - id: S17_5_B_III
+    clause: "17(5)(b)(iii)"
+    title: Travel benefits to employees on vacation (leave or home travel concession)
+    text: >-
+      travel benefits extended to employees on vacation such as leave or home travel concession:
+      Provided that the input tax credit in respect of such goods or services or both shall be available,
+      where it is obligatory for an employer to provide the same to its employees under any law for the
+      time being in force.
+    exceptions:
+      - id: S17_5_B_III.EX_EMPLOYER_OBLIGATION
+        text: *b_employer_proviso
+        condition: A law obliges the employer to provide the travel benefit. Business travel is not vacation travel and is outside (b)(iii).
+    ambiguity: low
+    needs_business_profile: false
+    effective_from: 2019-02-01
+    effective_to: null
+    source: *cbic2020
+    verified: false
+
+  # ---------------------------------------------------------------- (c), (d) construction
+  - id: S17_5_C
+    clause: "17(5)(c)"
+    title: Works contract services for construction of immovable property
+    text: >-
+      works contract services when supplied for construction of an immovable property (other than plant
+      and machinery) except where it is an input service for further supply of works contract service;
+    exceptions:
+      - id: S17_5_C.EX_PLANT_AND_MACHINERY
+        text: "(other than plant and machinery)"
+        condition: The works contract is for plant and machinery as defined in the Explanation (fixed apparatus/machinery used for outward supply), not land, building or civil structures.
+      - id: S17_5_C.EX_FURTHER_WORKS_CONTRACT
+        text: "except where it is an input service for further supply of works contract service;"
+        condition: The buyer is itself a works contractor and uses the service to supply works contract service.
+    ambiguity: high
+    needs_business_profile: true
+    effective_from: 2017-07-01
+    effective_to: null
+    source: *cbic2020
+    verified: false
+    notes: >-
+      "construction" includes repairs etc. only to the extent of capitalisation (S17_EXPL_CONSTRUCTION).
+      Revenue repairs are outside (c).
+
+  - id: S17_5_D
+    clause: "17(5)(d)"
+    title: Goods or services for construction of immovable property on own account
+    text: >-
+      goods or services or both received by a taxable person for construction of an immovable property
+      (other than plant and machinery) on his own account including when such goods or services or both
+      are used in the course or furtherance of business.
+    exceptions:
+      - id: S17_5_D.EX_PLANT_AND_MACHINERY
+        text: "(other than plant and machinery)"
+        condition: The construction is of plant and machinery as defined in the Explanation. A building is never plant and machinery, whatever its function.
+    ambiguity: high
+    needs_business_profile: false
+    effective_from: 2017-07-01
+    effective_to: null
+    source: >-
+      DRAFT: VERBATIM CBIC 2020 text with the words "plant or machinery" replaced by "plant and machinery"
+      per Finance Act 2025 s.124 (as reported by secondary sources; official gazette text not fetched).
+    verified: false
+    notes: >-
+      History: the original text said "plant or machinery". Supreme Court, Safari Retreats (Oct 2024) held
+      this was wider than the defined "plant and machinery" (functionality test for buildings). Finance Act
+      2025 substituted "plant and machinery" with retrospective effect from 01.07.2017, so this text applies
+      to every period. The FA 2025 Explanation 2 is not yet in this pack (see definitions).
+
+  # ---------------------------------------------------------------- (e) - (i)
+  - id: S17_5_E
+    clause: "17(5)(e)"
+    title: Supplies on which tax was paid under the composition scheme (section 10)
+    text: goods or services or both on which tax has been paid under section 10;
+    exceptions: []
+    ambiguity: low
+    needs_business_profile: false
+    effective_from: 2017-07-01
+    effective_to: null
+    source: *cbic2020
+    verified: false
+    notes: A composition supplier issues a bill of supply, not a tax invoice, and cannot charge tax.
+
+  - id: S17_5_F
+    clause: "17(5)(f)"
+    title: Supplies received by a non-resident taxable person (other than imported goods)
+    text: goods or services or both received by a non-resident taxable person except on goods imported by him;
+    exceptions:
+      - id: S17_5_F.EX_IMPORTED_GOODS
+        text: "except on goods imported by him;"
+        condition: The buyer is a non-resident taxable person and the goods were imported by it.
+    ambiguity: low
+    needs_business_profile: true
+    effective_from: 2017-07-01
+    effective_to: null
+    source: *cbic2020
+    verified: false
+
+  - id: S17_5_FA
+    clause: "17(5)(fa)"
+    title: Supplies used for corporate social responsibility (CSR) obligations
+    text: >-
+      goods or services or both received by a taxable person, which are used or intended to be used for
+      activities relating to his obligations under corporate social responsibility referred to in section
+      135 of the Companies Act, 2013;
+    exceptions: []
+    ambiguity: medium
+    needs_business_profile: false
+    effective_from: 2023-10-01
+    effective_to: null
+    source: "DRAFT: inserted by Finance Act 2023 (s.139 per secondary sources), w.e.f. 01.10.2023; text from secondary sources, official gazette text not fetched."
+    verified: false
+
+  - id: S17_5_G
+    clause: "17(5)(g)"
+    title: Personal consumption
+    text: goods or services or both used for personal consumption;
+    exceptions: []
+    ambiguity: high
+    needs_business_profile: false
+    effective_from: 2017-07-01
+    effective_to: null
+    source: *cbic2020
+    verified: false
+
+  - id: S17_5_H
+    clause: "17(5)(h)"
+    title: Goods lost, stolen, destroyed, written off, or given as gifts or free samples
+    text: goods lost, stolen, destroyed, written off or disposed of by way of gift or free samples; and
+    exceptions: []
+    ambiguity: medium
+    needs_business_profile: false
+    effective_from: 2017-07-01
+    effective_to: null
+    source: *cbic2020
+    verified: false
+
+  # (i) has three effective-dated versions. Only one is in force for any period.
+  - id: S17_5_I
+    clause: "17(5)(i)"
+    title: Tax paid under section 74 (fraud/suppression demands) and, before Oct 2023, sections 129 and 130
+    text: any tax paid in accordance with the provisions of sections 74, 129 and 130.
+    exceptions: []
+    ambiguity: low
+    needs_business_profile: false
+    effective_from: 2017-07-01
+    effective_to: 2023-09-30
+    source: *cbic2020
+    verified: false
+
+  - id: S17_5_I
+    clause: "17(5)(i)"
+    title: Tax paid under section 74 (fraud/suppression demands)
+    text: any tax paid in accordance with the provisions of section 74.
+    exceptions: []
+    ambiguity: low
+    needs_business_profile: false
+    effective_from: 2023-10-01
+    effective_to: 2024-10-31
+    source: "DRAFT: Finance Act 2023 omitted references to sections 129 and 130, w.e.f. 01.10.2023 (secondary sources)."
+    verified: false
+
+  - id: S17_5_I
+    clause: "17(5)(i)"
+    title: Tax paid under section 74 for periods up to FY 2023-24
+    text: any tax paid in accordance with the provisions of section 74 in respect of any period up to Financial Year 2023-24.
+    exceptions: []
+    ambiguity: low
+    needs_business_profile: false
+    effective_from: 2024-11-01
+    effective_to: null
+    source: "DRAFT: Finance Act 2024 amendment, w.e.f. 01.11.2024 (from memory/secondary sources)."
+    verified: false
+    notes: Verify the exact words and whether section 74A (FY 2024-25 onward) is referenced.

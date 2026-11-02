@@ -1,0 +1,111 @@
+# Rule pack: CGST Act 2017, Section 16 - conditions for taking input tax credit.
+#
+# These rules are NEVER decided by the LLM. Each entry names the plain Python function in itc/section16.py
+# that checks it, and the label a failed check produces. Citation IDs here share one namespace with
+# cgst_17_5.yaml. Same conventions: `source` starting with DRAFT = not from an official consolidated text;
+# `verified` stays false until a human checks it.
+
+version: 2026.11.0
+act: Central Goods and Services Tax Act, 2017
+section: "16"
+covers_from: 2022-10-01     # the 30-November deadline in 16(4) and the current 180-day proviso start here
+
+rules:
+  - id: S16_2_A
+    clause: "16(2)(a)"
+    title: Possession of a tax invoice or debit note
+    text: >-
+      he is in possession of a tax invoice or debit note issued by a supplier registered under this Act, or
+      such other tax paying documents as may be prescribed;
+    check: check_invoice_fields
+    outcome_on_fail: Deferred
+    effective_from: 2017-07-01
+    effective_to: null
+    source: &cbic2020 "VERBATIM: CBIC consolidated CGST Act updated 30.09.2020, p.38, https://cbic-gst.gov.in/pdf/CGST-Act-Updated-30092020.pdf"
+    verified: false
+    notes: Proxy check = mandatory invoice fields are present (supplier GSTIN, invoice number, date, taxable value, tax).
+
+  - id: S16_2_AA
+    clause: "16(2)(aa)"
+    title: Invoice furnished by the supplier and communicated to the recipient (appears in GSTR-2B)
+    text: >-
+      the details of the invoice or debit note referred to in clause (a) has been furnished by the supplier
+      in the statement of outward supplies and such details have been communicated to the recipient of such
+      invoice or debit note in the manner specified under section 37;
+    check: match_gstr2b
+    outcome_on_fail: Deferred
+    effective_from: 2022-01-01
+    effective_to: null
+    source: "DRAFT: inserted by Finance Act 2021, w.e.f. 01.01.2022; text from memory/secondary sources."
+    verified: false
+    notes: Not in GSTR-2B yet = "not yet", not a permanent loss (it can appear in a later month's 2B).
+
+  - id: S16_2_B
+    clause: "16(2)(b)"
+    title: Goods or services actually received
+    text: >-
+      he has received the goods or services or both. Explanation.—For the purposes of this clause, it shall
+      be deemed that the registered person has received the goods or, as the case may be, services— (i)
+      where the goods are delivered by the supplier to a recipient or any other person on the direction of
+      such registered person, whether acting as an agent or otherwise, before or during movement of goods,
+      either by way of transfer of documents of title to goods or otherwise; (ii) where the services are
+      provided by the supplier to any person on the direction of and on account of such registered person;
+    check: check_receipt
+    outcome_on_fail: Deferred
+    effective_from: 2019-02-01
+    effective_to: null
+    source: *cbic2020
+    verified: false
+
+  - id: S16_2_PROVISO_180
+    clause: "16(2), second and third provisos"
+    title: Payment to the supplier within 180 days of the invoice date
+    text: >-
+      Provided further that where a recipient fails to pay to the supplier of goods or services or both,
+      other than the supplies on which tax is payable on reverse charge basis, the amount towards the value
+      of supply along with tax payable thereon within a period of one hundred and eighty days from the date
+      of issue of invoice by the supplier, an amount equal to the input tax credit availed by the recipient
+      shall be paid by him along with interest payable under section 50, in such manner as may be
+      prescribed: Provided also that the recipient shall be entitled to avail of the credit of input tax on
+      payment made by him of the amount towards the value of supply of goods or services or both along with
+      tax payable thereon.
+    check: check_180_days
+    outcome_on_fail: Deferred
+    effective_from: 2022-10-01
+    effective_to: null
+    source: >-
+      DRAFT: second proviso as amended by Finance Act 2022 (w.e.f. 01.10.2022; from memory/secondary
+      sources). Third proviso VERBATIM from CBIC 2020 consolidated text, p.39.
+    verified: false
+    notes: Failing means reversal now and re-availment on payment, so the label is Deferred, not Blocked.
+
+  - id: S16_4
+    clause: "16(4)"
+    title: Time limit for taking ITC
+    text: >-
+      A registered person shall not be entitled to take input tax credit in respect of any invoice or debit
+      note for supply of goods or services or both after the thirtieth day of November following the end of
+      financial year to which such invoice or debit note pertains or furnishing of the relevant annual
+      return, whichever is earlier.
+    check: section16_4_deadline
+    outcome_on_fail: Blocked
+    effective_from: 2022-10-01
+    effective_to: null
+    source: "DRAFT: as amended by Finance Act 2022, w.e.f. 01.10.2022; text from memory/secondary sources."
+    verified: false
+    notes: Missing this deadline is a permanent loss, so the label is Blocked. Sub-sections 16(5)/16(6) (FA 2024 relaxations for FY 2017-18 to 2020-21) are out of scope.
+
+  - id: S16_2_C
+    clause: "16(2)(c)"
+    title: Tax actually paid to the Government by the supplier
+    text: >-
+      subject to the provisions of section 41, the tax charged in respect of such supply has been actually
+      paid to the Government, either in cash or through utilisation of input tax credit admissible in
+      respect of the said supply;
+    check: null
+    outcome_on_fail: Deferred
+    effective_from: 2017-07-01
+    effective_to: null
+    source: *cbic2020
+    verified: false
+    notes: NOT CHECKED by this prototype; the buyer cannot see the supplier's payment. Listed so the gap is explicit.
